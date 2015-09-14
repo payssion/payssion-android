@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- Pressed -->
+    <item android:state_pressed="true" android:state_enabled="true" android:drawable="@drawable/list_arrow_focused" />
+    
+    <!-- Focused states -->
+    <item android:state_focused="true" android:state_pressed="false" android:state_enabled="true" android:drawable="@drawable/list_arrow_focused" />
+    
+    <!-- Non focused states -->
+    <item android:state_focused="false" android:state_pressed="false" android:state_enabled="true" android:drawable="@drawable/list_arrow_normal" />
+
+</selector>
