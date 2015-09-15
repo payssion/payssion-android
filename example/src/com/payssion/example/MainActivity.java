@@ -89,6 +89,7 @@ public class MainActivity extends Activity {
 				        .setCurrency(currency)
 				        .setPMId(item.getPMId())
 				        .setDescription("test")
+				        .setTrackId("123") // your order id
 				        .setSecretKey("286a0b747c946e3d902f017cf75d3bd1")
 				        .setPayerEmail("habertlee@mail.com")
 				        .setPayerRef(ref)
@@ -142,8 +143,10 @@ public class MainActivity extends Activity {
 			if (null != data) {
 				PayResponse response = (PayResponse)data.getSerializableExtra(PayssionActivity.RESULT_DATA);
 				if (null != response) {
-					Log.v(this.getClass().getSimpleName(), "RESULT_OK" + response.getTransactionId()); 
-					//服务端查询该笔订单状态
+                    String transId = response.getTransactionId(); //get Payssion transaction id
+					String orderId = response.getTrackId(); //get your order id
+                    //you will have to query the payment state with the transId or orderId from your server
+                    //as we will notify you server whenever there is a payment state change
 				} else {
 					//should never go here
 				}
