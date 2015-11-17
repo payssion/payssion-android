@@ -77,9 +77,17 @@ public class MainActivity extends Activity {
 				String ref = "";
 				String pmid = item.getPMId();
 				if ("qiwi" == pmid) {
-					ref = "tel:+12819784237";
+					//ref = "tel:+12819784237";
+				} else if ("onecard" == pmid) {
+					amount = 0.1;
+				}  else if ("cashu" == pmid) {
+					amount = 0.1;
 				} else if (null!= pmid && pmid.endsWith("_br")){
-					ref = "00003456789";
+					//ref = "00003456789";
+				} else if ("razorpay_in" == pmid) {
+					//ref = "tel:+12819784237";
+					currency = "INR";
+					amount = 100;
 				}
 				Intent intent = new Intent(MainActivity.this, PayssionActivity.class);
 				intent.putExtra(PayssionActivity.ACTION_REQUEST, 
@@ -108,6 +116,14 @@ public class MainActivity extends Activity {
 		});
 		
 		mPMList = new ArrayList<PMItem>();
+		mPMList.add(new PMItem().setItemId(0).setPMId("beeline_ru").setPMName("beeline"));
+		mPMList.add(new PMItem().setItemId(0).setPMId("yamoney").setPMName("yamoney"));
+		mPMList.add(new PMItem().setItemId(0).setPMId("moneta_ru").setPMName("moneta_ru"));
+		mPMList.add(new PMItem().setItemId(0).setPMId("sberbank_ru").setPMName("sberbank_ru"));
+		mPMList.add(new PMItem().setItemId(0).setPMId("banktransfer_ru").setPMName("banktransfer_ru"));
+		mPMList.add(new PMItem().setItemId(0).setPMId("contact_ru").setPMName("contact_ru"));
+		mPMList.add(new PMItem().setItemId(0).setPMId("euroset_ru").setPMName("euroset_ru"));
+		mPMList.add(new PMItem().setItemId(0).setPMId("razorpay_in").setPMName("razorpay"));
 		mPMList.add(new PMItem().setItemId(0).setPMId("cashu").setPMName("cashu"));
 		mPMList.add(new PMItem().setItemId(0).setPMId("onecard").setPMName("onecard"));
 		mPMList.add(new PMItem().setItemId(0).setPMId("paysafecard").setPMName("paysafecard"));
