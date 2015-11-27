@@ -6,8 +6,11 @@ import java.util.List;
 import com.payssion.android.sdk.Payssion;
 import com.payssion.android.sdk.PayssionActivity;
 import com.payssion.android.sdk.constant.PPaymentState;
+import com.payssion.android.sdk.model.GetDetailRequest;
+import com.payssion.android.sdk.model.GetDetailResponse;
 import com.payssion.android.sdk.model.PayRequest;
 import com.payssion.android.sdk.model.PayResponse;
+import com.payssion.android.sdk.model.PayssionResponse;
 import com.payssion.android.sdk.model.PayssionResponseHandler;
 
 import android.app.Activity;
@@ -25,6 +28,7 @@ import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private ListView mPMListView;
@@ -79,9 +83,9 @@ public class MainActivity extends Activity {
 				if ("qiwi" == pmid) {
 					//ref = "tel:+12819784237";
 				} else if ("onecard" == pmid) {
-					amount = 0.1;
+					amount = 0.01;
 				}  else if ("cashu" == pmid) {
-					amount = 0.1;
+					amount = 0.01;
 				} else if (null!= pmid && pmid.endsWith("_br")){
 					//ref = "00003456789";
 				} else if ("razorpay_in" == pmid) {
@@ -163,6 +167,52 @@ public class MainActivity extends Activity {
 					String orderId = response.getTrackId(); //get your order id
                     //you will have to query the payment state with the transId or orderId from your server
                     //as we will notify you server whenever there is a payment state change
+					
+					//you can query in the following way if you don't own a server
+					Payssion.getDetail(new GetDetailRequest()
+					.setAPIKey("5963a4c1c35c2a8e")
+					.setSecretKey("286a0b747c946e3d902f017cf75d3bd1")
+					.setTransactionId(transId)
+					.setTrackId(orderId), new PayssionResponseHandler() {
+						@Override
+						public void onError(int arg0, String arg1,
+								Throwable arg2) {
+							// TODO Auto-generated method stub
+							
+						}
+
+						@Override
+						public void onFinish() {
+							// TODO Auto-generated method stub
+							
+						}
+
+						@Override
+						public void onStart() {
+							// TODO Auto-generated method stub
+							
+						}
+
+						@Override
+						public void onSuccess(PayssionResponse response) {
+							if (response.isSuccess()) {
+								GetDetailResponse detail = (GetDetailResponse)response;
+								if (null != detail) {
+									Toast.makeText(MainActivity.this, detail.getStateStr(), Toast.LENGTH_SHORT).show();
+									if (PPaymentState.COMPLETED == detail.getState()) {
+										//the payment was paid successfully
+									} else if (PPaymentState.FAILED == detail.getState()) {
+										//the payment was failed
+									} else if (PPaymentState.PENDING == detail.getState()) {
+										//the payment was still pending, please save the transId and orderId
+										//and recheck the state later as the payment may not be confirmed instantly
+									}
+								}
+							} else {
+								Toast.makeText(MainActivity.this, response.getDescription(), Toast.LENGTH_SHORT).show();
+							}
+						}
+					});
 				} else {
 					//should never go here
 				}
