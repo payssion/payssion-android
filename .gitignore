@@ -1,0 +1,14 @@
+
+*.class
+
+*.dex
+
+example/bin/*
+example/gen/*
+
+example/.project
+
+example/.classpath
+
+*.prefs
+
