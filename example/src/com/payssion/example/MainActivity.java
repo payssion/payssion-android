@@ -96,7 +96,7 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent(MainActivity.this, PayssionActivity.class);
 				intent.putExtra(PayssionActivity.ACTION_REQUEST, 
 						new PayRequest()
-				        .setAPIKey("5963a4c1c35c2a8e")
+				        .setAPIKey("5963a4c1c35c2a8e1")
 				        .setAmount(amount)
 				        .setCurrency(currency)
 				        .setPMId(item.getPMId())
@@ -170,7 +170,7 @@ public class MainActivity extends Activity {
 					
 					//you can query in the following way if you don't own a server
 					Payssion.getDetail(new GetDetailRequest()
-					.setAPIKey("5963a4c1c35c2a8e")
+					.setAPIKey("5963a4c1c35c2a8e1")
 					.setSecretKey("286a0b747c946e3d902f017cf75d3bd1")
 					.setTransactionId(transId)
 					.setTrackId(orderId), new PayssionResponseHandler() {
