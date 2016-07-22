@@ -1,4 +1,4 @@
-# sdk_android
+# PayssionSDK
 ## Installation
 ##### 1. 将文件`PayssionSDK.jar`拷贝到`libs/`文件夹
 
