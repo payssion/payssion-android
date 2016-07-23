@@ -2,12 +2,18 @@
 ## Installation
 ##### 1. 将文件`PayssionSDK.jar`拷贝到`libs/`文件夹
 
-Android Studio需要如下配置：
+`Android Studio`需要如下配置：
 
 配置app级别build.gradle,在dependencies中增加以下compile
  - compile 'com.android.support:appcompat-v7:xx.xx'
  - compile 'com.android.support:design:xx.xx'
  - compile files('libs/PayssionSDK.jar')
+
+`Eclipse`需要如下配置：
+
+ - 导入android-support-v7-appcompat库.
+ - 导入android-support-design库.
+ - 将`PayssionSDK.jar`Add to Build Path.    
 
 ##### 2. 在`AndroidManifest.xml`文件中添加以下权限:
 ```xml
