@@ -101,7 +101,7 @@ public class MainActivity extends Activity {
 				        .setCurrency(currency)
 				        .setPMId(item.getPMId())
 				        .setDescription("test")
-				        .setTrackId("123") // your order id
+				        .setOrderId("123") // your order id
 				        .setSecretKey("286a0b747c946e3d902f017cf75d3bd1")
 				        .setPayerEmail("habertlee@mail.com")
 				        .setPayerRef(ref)
@@ -164,7 +164,7 @@ public class MainActivity extends Activity {
 				PayResponse response = (PayResponse)data.getSerializableExtra(PayssionActivity.RESULT_DATA);
 				if (null != response) {
                     String transId = response.getTransactionId(); //get Payssion transaction id
-					String orderId = response.getTrackId(); //get your order id
+					String orderId = response.getOrderId(); //get your order id
                     //you will have to query the payment state with the transId or orderId from your server
                     //as we will notify you server whenever there is a payment state change
 					
@@ -173,7 +173,7 @@ public class MainActivity extends Activity {
 					.setAPIKey("5963a4c1c35c2a8e1")
 					.setSecretKey("286a0b747c946e3d902f017cf75d3bd1")
 					.setTransactionId(transId)
-					.setTrackId(orderId), new PayssionResponseHandler() {
+					.setOrderId(orderId), new PayssionResponseHandler() {
 						@Override
 						public void onError(int arg0, String arg1,
 								Throwable arg2) {
