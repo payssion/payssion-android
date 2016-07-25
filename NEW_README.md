@@ -26,7 +26,7 @@
 <activity
     android:name="com.payssion.android.sdk.PayssionActivity"
     android:label="@string/app_name"
-    android:theme="@style/Theme.Transparent"/>
+    android:theme="@style/Theme.PayssionTrans"/>
 <activity
     android:name="com.payssion.android.sdk.PaymentWebActivity"
     android:label="@string/app_name"
@@ -35,7 +35,7 @@
 
 ##### 3. 在values/styles.xml文件中添加以下style
 ```xml
-   <style name="Theme.Transparent" parent="Theme.AppCompat.Light">
+   <style name="Theme.PayssionTrans" parent="Theme.AppCompat.Light">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
