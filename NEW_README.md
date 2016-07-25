@@ -57,7 +57,6 @@ intent.putExtra(PayssionActivity.ACTION_REQUEST,
         .setAmount(amount)
         .setCurrency(currency)
         .setPMId(pmId)
-        .setPayerRef(ref)
         .setDescription(description)
         .setOrderId(orderId) //Your order id
         .setSecretKey(secreKey)
@@ -125,13 +124,13 @@ MainActivity.this.startActivityForResult(intent, 0);
      * 设置需要支持的支付方式
      * @param enablePM 需支持的PMID.如需多个可用“|”分割开。比如"pm_idA|pm_idB|pm_idC"
      */
-    PayssionConfig.setEnablePM(String enablePM);
+    PayssionConfig.enablePM(String enablePM);
 
    /**
      * 设置不需要支持的支付方式
      * @param disEnablePM 不需支持的PMID.如需多个可用“|”分割开。比如"pm_idA|pm_idB|pm_idC"
      */
-    PayssionConfig.setDisEnablePM(String disEnablePM);
+    PayssionConfig.disenablePM(String disenablePM);
 ```
 ### 设置主题颜色
 您可以通过以下函数设置Theme颜色.
@@ -170,7 +169,7 @@ PayssionConfig.setLanguage(PLanguage.ZH_SIMPLIFIED);
 默认语种会通过`java.util.Locale.getDefault().getLanguage()`函数读取本地语言设置.
 
 **\*注意***  
-1. PayssionConfig设置语言的优先级要大于PayRequest.  
+1. PayRequest设置语言的优先级要大于PayssionConfig.  
 2. 阿拉伯语需要在`AndroidManifest.xml`文件中的`application`元素中加入`android:supportsRtl="true"`属性.
     该属性支持Android4.2及以上版本.  
     
