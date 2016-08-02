@@ -1,28 +1,28 @@
 
 # PayssionSDK
 ## Installation
-##### 1. 将文件`PayssionSDK.jar`拷贝到`libs/`文件夹
+##### 1. Copy `PayssionSDK.jar` to the `libs/` folder.
 
-`Android Studio`需要如下配置：
+`Android Studio`：
 
-配置app级别build.gradle,在dependencies中增加以下compile
+Add the following to your `build.gradle`:
  - compile 'com.android.support:appcompat-v7:xx.xx'
  - compile 'com.android.support:design:xx.xx'
  - compile files('libs/PayssionSDK.jar')
 
-`Eclipse`需要如下配置：
+`Eclipse`：
 
- - 导入android-support-v7-appcompat库.
- - 导入android-support-design库.
+ - import android-support-v7-appcompat library.
+ - import android-support-design library.
  - 将`PayssionSDK.jar`Add to Build Path.    
 
-##### 2. 在`AndroidManifest.xml`文件中添加以下权限:
+##### 2. Make sure you have added the following permission to the `AndroidManifest.xml`:
 ```xml
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 ```
-**以及以下Activity**
+**and The Activity**
 ```xml
 <activity
     android:name="com.payssion.android.sdk.PayssionActivity"
@@ -34,7 +34,7 @@
     android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 ```
 
-##### 3. 在values/styles.xml文件中添加以下style
+##### 3. Add the following to your folder `values/styles.xml`
 ```xml
    <style name="Theme.PayssionTrans" parent="Theme.AppCompat.Light">
         <item name="android:windowIsTranslucent">true</item>
@@ -47,8 +47,8 @@
     </style>
 ```
 ## Usage
-###创建交易
-在`MainActivity`通过以下代码创建交易
+### Create a transaction
+Lets say you create a transaction in `MainActivity`.
 ```java
 Intent intent = new Intent(MainActivity.this, PayssionActivity.class);
 intent.putExtra(PayssionActivity.ACTION_REQUEST,
@@ -65,8 +65,8 @@ intent.putExtra(PayssionActivity.ACTION_REQUEST,
         .setPayerName(payerName));
 MainActivity.this.startActivityForResult(intent, 0);
 ```
-###处理返回数据
-需要在`MainActivity`重写`onActivityResult`函数
+###Handle result
+You need to overide `onActivityResult` method in `MainActivity`.
 ```java
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
