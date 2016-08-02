@@ -34,7 +34,7 @@ Add the following to your `build.gradle`:
     android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 ```
 
-##### 3. Add the following to your folder `values/styles.xml`
+##### 3. Add the following to your `values/styles.xml`
 ```xml
    <style name="Theme.PayssionTrans" parent="Theme.AppCompat.Light">
         <item name="android:windowIsTranslucent">true</item>
@@ -99,7 +99,7 @@ You need to overide `onActivityResult` method in `MainActivity`.
         super.onActivityResult(requestCode, resultCode, data);
     }
 ```
-##PMID设置
+##PMIDSetting
 ##### 1. 您可以设置仅支持`一种支付方式`.  
 在创建交易的`PayRequest`中设置  
 
@@ -122,19 +122,19 @@ MainActivity.this.startActivityForResult(intent, 0);
 图片格式默认为`.png`,图片名称为该支付方式的`PMID`.
 ```java
    /**
-     * 设置需要支持的支付方式
-     * @param enablePM 需支持的PMID.如需多个可用“|”分割开。比如"pm_idA|pm_idB|pm_idC"
+     * set enable payment methods
+     * @param enablePM enable PMID.如需多个可用“|”分割开。比如"pm_idA|pm_idB|pm_idC"
      */
     PayssionConfig.enablePM(String enablePM);
 
    /**
-     * 设置不需要支持的支付方式
-     * @param disEnablePM 不需支持的PMID.如需多个可用“|”分割开。比如"pm_idA|pm_idB|pm_idC"
+     * set disable payment methods
+     * @param disablePM disable PMID.如需多个可用“|”分割开。比如"pm_idA|pm_idB|pm_idC"
      */
-    PayssionConfig.disenablePM(String disenablePM);
+    PayssionConfig.disablePM(String disenablePM);
 ```
-### 设置主题颜色
-您可以通过以下函数设置Theme颜色.
+### Set Theme Color
+You can set theme color following this.
 ```java
    /**
      * Set Theme Color
@@ -142,7 +142,7 @@ MainActivity.this.startActivityForResult(intent, 0);
      */
 PayssionConfig.setThemeColor(@ColorInt int color);
 ```
-默认颜色是通过读取
+default color 
 ```java
 getTheme().resolveAttribute(android.R.attr.colorAccent, TypedValue, true);  
 defaultColor = TypedValue.data;
@@ -161,7 +161,7 @@ PayRequest payRequest = new PayRequest();
 payRequest.setLanguage(PLanguage.ZH_SIMPLIFIED);
 ...
 ```
-或
+or
 ```java
 PayssionConfig.setLanguage(PLanguage.ZH_SIMPLIFIED);
 ...
@@ -169,12 +169,12 @@ PayssionConfig.setLanguage(PLanguage.ZH_SIMPLIFIED);
 
 默认语种会通过`java.util.Locale.getDefault().getLanguage()`函数读取本地语言设置.
 
-**\*注意***  
+**\*Tips***  
 1. PayRequest设置语言的优先级要大于PayssionConfig.  
 2. 阿拉伯语需要在`AndroidManifest.xml`文件中的`application`元素中加入`android:supportsRtl="true"`属性.
     该属性支持Android4.2及以上版本.  
     
-**例:**  
+**example:**  
 ```xml
 <application
     android:allowBackup="true"
