@@ -100,10 +100,9 @@ You need to overide `onActivityResult` method in `MainActivity`.
     }
 ```
 ##PMIDSetting
-##### 1. 您可以设置仅支持`一种支付方式`.  
-在创建交易的`PayRequest`中设置  
+##### 1. You can set supports only one payment for `PayRequest`   
 
-**例:**
+**example:**
 ```java
 Intent intent = new Intent(MainActivity.this, PayssionActivity.class);
 intent.putExtra(PayssionActivity.ACTION_REQUEST,
@@ -116,20 +115,20 @@ new PayRequest()
     ...
 MainActivity.this.startActivityForResult(intent, 0);
 ```
-##### 2. 您可以设置支持`多种支付方式`.  
-我们提供以下两种函数支持您合理配置所需的支付方式.  
-您可以使用我们提供的支付方式`logo`,也可以在您工程的`assets`文件夹创建`”payssion/pm/“`路径,并将您自定义的支付方式`logo图片`放到该路径下.  
-图片格式默认为`.png`,图片名称为该支付方式的`PMID`.
+##### 2. You can set up support for multiple payment methods.  
+We provide the following two functions to support you in a reasonable configuration of the required payment methods.  
+You can use the payment method we provide `logo`, you can also project the `assets` folder to create the `"payssion/pm/"` path, and you will be able to customize the payment method logo pictures under the path.
+Image format is`.png`, the picture name for the payment method of `PMID`.
 ```java
    /**
      * set enable payment methods
-     * @param enablePM enable PMID.如需多个可用“|”分割开。比如"pm_idA|pm_idB|pm_idC"
+     * @param enablePM enable PMID.for more than one can be used "to" split open。for example"pm_idA|pm_idB|pm_idC"
      */
     PayssionConfig.enablePM(String enablePM);
 
    /**
      * set disable payment methods
-     * @param disablePM disable PMID.如需多个可用“|”分割开。比如"pm_idA|pm_idB|pm_idC"
+     * @param disablePM disable PMID.for more than one can be used "to" split open。for example"pm_idA|pm_idB|pm_idC"
      */
     PayssionConfig.disablePM(String disenablePM);
 ```
@@ -142,20 +141,19 @@ You can set theme color following this.
      */
 PayssionConfig.setThemeColor(@ColorInt int color);
 ```
-default color 
+Color default reads the following code to obtain 
 ```java
 getTheme().resolveAttribute(android.R.attr.colorAccent, TypedValue, true);  
 defaultColor = TypedValue.data;
 ```
-获得.
 
-**\*注意*** PayssionConfig相关的函数需要在创建交易之前设置  
+**\*Tips*** PayssionConfig's function needs to be called before the transaction is created.  
 
-### 多语言设置
-我们支持汉语简体(ZH_SIMPLIFIED)、汉语繁体(ZH_TRADITIONAL)、英语(EN)、德语(DE)、西班牙语(ES)、葡萄牙语(PT)、俄语(RU)、阿拉伯语(AR)等语种.  
-您可以通过`PayRequest.setLanguage(String language)`函数或者`PayssionConfig.setLanguage(String language)`设置语言,传入参数为`**PLanguage**`类的语种变量.  
+### Multi language setting
+We support the Chinese Simplified (ZH_SIMPLIFIED), traditional Chinese (ZH_TRADITIONAL), English (EN), German (DE), Spanish (ES), Portuguese (PT), Russian (RU), Arabic (AR) and other languages.  
+You can set the language through the function`PayRequest.setLanguage(String language)`or the function`PayssionConfig.setLanguage(String language)`,the incoming parameter is the language variable of the`**PLanguage**`class.  
 
-**例:**  
+**example:**  
 ```java
 PayRequest payRequest = new PayRequest();
 payRequest.setLanguage(PLanguage.ZH_SIMPLIFIED);
@@ -167,12 +165,12 @@ PayssionConfig.setLanguage(PLanguage.ZH_SIMPLIFIED);
 ...
 ```
 
-默认语种会通过`java.util.Locale.getDefault().getLanguage()`函数读取本地语言设置.
+The default language can be read by the`java.util.Locale.getDefault().getLanguage()`function in the local language settings.
 
 **\*Tips***  
-1. PayRequest设置语言的优先级要大于PayssionConfig.  
-2. 阿拉伯语需要在`AndroidManifest.xml`文件中的`application`元素中加入`android:supportsRtl="true"`属性.
-    该属性支持Android4.2及以上版本.  
+1. PayRequest sets the priority of the language to be greater than PayssionConfig.  
+2. Arabic needs to add the `android:supportsRtl= "true" attribute to the `application` element in the `AndroidManifest.xml` file.
+    This property supports Android4.2 and above versions.  
     
 **example:**  
 ```xml
