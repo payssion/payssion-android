@@ -12,9 +12,9 @@ Add the following to your `build.gradle`:
 
 `Eclipse`：
 
- - import android-support-v7-appcompat library.
- - import android-support-design library.
- - 将`PayssionSDK.jar`Add to Build Path.    
+ - Import android-support-v7-appcompat library.
+ - Import android-support-design library.
+ - `PayssionSDK.jar`Add to Build Path.    
 
 ##### 2. Make sure you have added the following permission to the `AndroidManifest.xml`:
 ```xml
@@ -22,7 +22,7 @@ Add the following to your `build.gradle`:
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 ```
-**and The Activity**
+**and This Activity**
 ```xml
 <activity
     android:name="com.payssion.android.sdk.PayssionActivity"
@@ -48,7 +48,7 @@ Add the following to your `build.gradle`:
 ```
 ## Usage
 ### Create a transaction
-Lets say you create a transaction in `MainActivity`.
+Let's say you create a transaction in `MainActivity`.
 ```java
 Intent intent = new Intent(MainActivity.this, PayssionActivity.class);
 intent.putExtra(PayssionActivity.ACTION_REQUEST,
@@ -102,7 +102,7 @@ You need to overide `onActivityResult` method in `MainActivity`.
 ##PMIDSetting
 ##### 1. You can set supports only one payment for `PayRequest`   
 
-**example:**
+**Example:**
 ```java
 Intent intent = new Intent(MainActivity.this, PayssionActivity.class);
 intent.putExtra(PayssionActivity.ACTION_REQUEST,
@@ -118,17 +118,17 @@ MainActivity.this.startActivityForResult(intent, 0);
 ##### 2. You can set up support for multiple payment methods.  
 We provide the following two functions to support you in a reasonable configuration of the required payment methods.  
 You can use the payment method we provide `logo`, you can also project the `assets` folder to create the `"payssion/pm/"` path, and you will be able to customize the payment method logo pictures under the path.
-Image format is`.png`, the picture name for the payment method of `PMID`.
+Image format is`.png`, the picture names for the payment method of `PMID`.
 ```java
    /**
      * set enable payment methods
-     * @param enablePM enable PMID.for more than one can be used "to" split open。for example"pm_idA|pm_idB|pm_idC"
+     * @param enablePM enable PMID.For more than one can be used "to" split open。For example"pm_idA|pm_idB|pm_idC"
      */
     PayssionConfig.enablePM(String enablePM);
 
    /**
      * set disable payment methods
-     * @param disablePM disable PMID.for more than one can be used "to" split open。for example"pm_idA|pm_idB|pm_idC"
+     * @param disablePM disable PMID.For more than one can be used "to" split open。For example"pm_idA|pm_idB|pm_idC"
      */
     PayssionConfig.disablePM(String disenablePM);
 ```
@@ -150,10 +150,10 @@ defaultColor = TypedValue.data;
 **\*Tips*** PayssionConfig's function needs to be called before the transaction is created.  
 
 ### Multi language setting
-We support the Chinese Simplified (ZH_SIMPLIFIED), traditional Chinese (ZH_TRADITIONAL), English (EN), German (DE), Spanish (ES), Portuguese (PT), Russian (RU), Arabic (AR) and other languages.  
+We support the Chinese Simplified (ZH_SIMPLIFIED), Traditional Chinese (ZH_TRADITIONAL), English (EN), German (DE), Spanish (ES), Portuguese (PT), Russian (RU), Arabic (AR) and other languages.  
 You can set the language through the function`PayRequest.setLanguage(String language)`or the function`PayssionConfig.setLanguage(String language)`,the incoming parameter is the language variable of the`**PLanguage**`class.  
 
-**example:**  
+**Example:**  
 ```java
 PayRequest payRequest = new PayRequest();
 payRequest.setLanguage(PLanguage.ZH_SIMPLIFIED);
@@ -172,7 +172,7 @@ The default language can be read by the`java.util.Locale.getDefault().getLanguag
 2. Arabic needs to add the `android:supportsRtl= "true" attribute to the `application` element in the `AndroidManifest.xml` file.
     This property supports Android4.2 and above versions.  
     
-**example:**  
+**Example:**  
 ```xml
 <application
     android:allowBackup="true"
