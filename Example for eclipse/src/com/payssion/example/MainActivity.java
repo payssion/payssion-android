@@ -47,8 +47,6 @@ public class MainActivity extends Activity {
               intent.putExtra(
                       PayssionActivity.ACTION_REQUEST,
                       new PayRequest()
-//                              .setAPIKey("5963a4c1c35c2a8e1")
-//                              .setSecretKey("286a0b747c946e3d902f017cf75d3bd1")
                               .setLiveMode(false)
                               .setAPIKey("916937a82dd7af5a")
                               .setSecretKey("demo456")
