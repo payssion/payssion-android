@@ -6,13 +6,11 @@
 
 配置app级别build.gradle,在dependencies中增加以下compile
  - compile 'com.android.support:appcompat-v7:xx.xx'
- - compile 'com.android.support:design:xx.xx'
  - compile files('libs/PayssionSDK.jar')
 
 `Eclipse`需要如下配置：
 
  - 导入android-support-v7-appcompat库.
- - 导入android-support-design库.
  - 将`PayssionSDK.jar`Add to Build Path.    
 
 ##### 2. 在`AndroidManifest.xml`文件中添加以下权限:
@@ -52,14 +50,14 @@
 Intent intent = new Intent(MainActivity.this, PayssionActivity.class);
 intent.putExtra(PayssionActivity.ACTION_REQUEST,
         new PayRequest()
-        .setLiveMode(false) //false if you are using sandbox environment
-        .setAPIKey(apiKey) //Your API Key
+        .setLiveMode(false) //测试环境传false.正式环境传true.默认正式环境
+        .setAPIKey(apiKey) //请注意区分测试环境和正式环境的APIKey
         .setAmount(amount)
         .setCurrency(currency)
         .setPMId(pmId)
         .setDescription(description)
-        .setOrderId(orderId) //Your order id
-        .setSecretKey(secreKey)
+        .setOrderId(orderId) //您的订单Id
+        .setSecretKey(secreKey)//请注意区分测试环境和正式环境的SecretKey
         .setPayerEmail(payerEmail)
         .setPayerName(payerName));
 MainActivity.this.startActivityForResult(intent, 0);
@@ -75,8 +73,8 @@ MainActivity.this.startActivityForResult(intent, 0);
             if (null != data) {
                 PayResponse response = (PayResponse)data.getSerializableExtra(PayssionActivity.RESULT_DATA);
                 if (null != response) {
-                    String transId = response.getTransactionId(); //get Payssion transaction id
-					String orderId = response.getOrderId(); //get your order id
+                    String transId = response.getTransactionId(); //获取Payssion交易Id
+					String orderId = response.getOrderId(); //获取您的订单Id
                     //you will have to query the payment state with the transId or orderId from your server
                     //as we will notify you server whenever there is a payment state change
                 } else {
