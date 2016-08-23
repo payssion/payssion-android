@@ -105,8 +105,8 @@ MainActivity.this.startActivityForResult(intent, 0);
 Intent intent = new Intent(MainActivity.this, PayssionActivity.class);
 intent.putExtra(PayssionActivity.ACTION_REQUEST,
 new PayRequest()
-    .setLiveMode(false) //false if you are using sandbox environment
-    .setAPIKey(apiKey) //Your API Key
+    .setLiveMode(false)
+    .setAPIKey(apiKey)
     .setAmount(amount)
     .setCurrency(currency)
     .setPMId(pmId)
