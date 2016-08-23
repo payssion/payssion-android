@@ -35,14 +35,13 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(
                         PayssionActivity.ACTION_REQUEST,
                         new PayRequest()
-                                .setLiveMode(false)
-                                .setAPIKey("916937a82dd7af5a")
-                                .setSecretKey("demo456")
+                                .setLiveMode(false)//false if you are using sandbox environment
+                                .setAPIKey("916937a82dd7af5a")//Your API Key
                                 .setAmount(amount)
                                 .setCurrency(currency)
                                 .setDescription("Demo Payment")
-                                // your order id
-                                .setOrderId("123")
+                                .setOrderId("123")// your order id
+                                .setSecretKey("demo456")
                                 .setPayerEmail("habertlee@mail.com")
                                 .setPayerRef(ref).setPayerName("habert lee"));
                 MainActivity.this.startActivityForResult(intent, 0);
