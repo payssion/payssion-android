@@ -7,13 +7,11 @@
 
 Add the following to your `build.gradle`:
  - compile 'com.android.support:appcompat-v7:xx.xx'
- - compile 'com.android.support:design:xx.xx'
  - compile files('libs/PayssionSDK.jar')
 
 `Eclipse`：
 
  - Import android-support-v7-appcompat library.
- - Import android-support-design library.
  - `PayssionSDK.jar`Add to Build Path.    
 
 ##### 2. Make sure you have added the following permission to the `AndroidManifest.xml`:
