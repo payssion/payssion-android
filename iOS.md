@@ -1,6 +1,8 @@
 # PayssionSDK
 ## 导入代码
 ##### 1. 将文件`PayssionSDK.framework`拷贝到项目文件夹下，并导入到项目工程中。   
+在Build Phases选项卡的Link Binary With Libraries中，增加以下依赖：
+
 
 ##### 2. 在需要调用PayssionSDK的文件中，增加头文件引用。并遵守PaymentDelegate协议
 ```xml
