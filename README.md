@@ -1,5 +1,10 @@
 
 # PayssionSDK
+
+[中文文档](https://github.com/payssion/payssion-android/blob/master/README_ZH.md)
+
+[FAQ中文](https://github.com/payssion/payssion-android/blob/master/FAQ_ZH.md)
+
 ## Installation
 ##### 1. Copy `PayssionSDK.jar` to the `libs/` folder.
 
