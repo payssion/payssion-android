@@ -67,3 +67,10 @@ Payssion.getDetail(new GetDetailRequest()
 
 **A8.** setOrderId(String)传入的订单号需要用户自定义。定义规则建议使用a-z+0-9,长度不超过32位。
 
+##### Q9. 提示"No support for payment methods"
+
+**A9.** 1.SDK判断当前手机的国家没有支持的支付，请检查是否使用PayssionConfig类对pmid显示做了过多的限制。如需要
+        接入的支付方式不多，不建议使用PayssionConfig类限制，而建议自己构建支付列表，用Payssion.setPMId(pmid)传参的方式实现。  
+        如设置后依然显示该提示，请参考第2条。
+        
+        2.请手动清除APP数据后重试。
