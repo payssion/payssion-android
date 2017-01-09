@@ -1,5 +1,5 @@
 # PayssionSDK
-## Installation
+## 安装
 ##### 1. 将文件`PayssionSDK.jar`拷贝到`libs/`文件夹
 
 `Android Studio`需要如下配置：
@@ -43,8 +43,7 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 ```
-## 发起交易参数说明
---------
+## 参数说明
 
 | 方法名  	      | 参数名         | 类型         | 必填          | 示例          | 释义          | 详解         |
 | :------------ | :------------ |:------------ |:--- |:--------------- |:---------------- |:--------------------- |
@@ -60,7 +59,7 @@
 | setPayerName  | payer_name    | string       | 否           | example name       | 付款方姓名 | 
 | setPayerRef   | payer_ref     | string       | 否           | example ref        | 付款方其他信息 | 
 
-## Usage
+## 使用
 ###创建交易
 在`MainActivity`通过以下代码创建交易
 ```java
@@ -147,7 +146,7 @@ MainActivity.this.startActivityForResult(intent, 0);
      */
     PayssionConfig.disenablePM(String disenablePM);
 ```
-### 设置主题颜色
+## 设置主题颜色
 您可以通过以下函数设置Theme颜色.
 ```java
    /**
@@ -165,7 +164,7 @@ defaultColor = TypedValue.data;
 
 **\*注意*** PayssionConfig相关的函数需要在创建交易之前设置  
 
-### 多语言设置
+## 多语言设置
 我们支持汉语简体(ZH_SIMPLIFIED)、汉语繁体(ZH_TRADITIONAL)、英语(EN)、德语(DE)、西班牙语(ES)、葡萄牙语(PT)、俄语(RU)、阿拉伯语(AR)等语种.  
 您可以通过`PayRequest.setLanguage(String language)`函数或者`PayssionConfig.setLanguage(String language)`设置语言,传入参数为`**PLanguage**`类的语种变量.  
 
