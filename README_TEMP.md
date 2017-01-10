@@ -1,5 +1,20 @@
 # PayssionSDK
 ## 安装
+
+**由于Google已放弃支持ADT Bundle(adt-bundle-android-developer-tools)，详情[点击](https://android-developers.googleblog.com/2015/06/an-update-on-eclipse-android-developer.html)。该SDK也不再支持ADT Bundle，建议开发者转向Android Studio。项目迁移请点击[从 Eclipse 迁移至 Android Studio](https://developer.android.com/studio/intro/migrate.html?hl=zh-cn#android_studio)，Android Studio下载请点击[下载](https://developer.android.com/studio/index.html?hl=zh-cn)，Android Studio上手使用请点击[探索 Android Studio](https://developer.android.com/studio/intro/index.html?hl=zh-cn)。由于历史原因不便迁移的请参考以下条目。**
+
+- ADT Bundle
+
+   使用ADT Bundle的开发者请参考[本文档](/adt-bundle.md)
+
+- Eclipse + ADT plugin + sdk
+   
+   使用Eclipse + ADT plugin + sdk的开发者请参考[本文档](/eclipse.md)
+
+- Android Studio
+
+   使用Android Studio的开发者请继续阅读。
+
 ##### 1. 将文件`PayssionSDK.jar`拷贝到`libs/`文件夹
 
 `Android Studio`需要如下配置：
@@ -198,4 +213,4 @@ PayssionConfig.setLanguage(PLanguage.ZH_SIMPLIFIED);
     ...
 </application>
 ```
-    
+
