@@ -17,16 +17,9 @@
 
 ##### 1. 将文件`PayssionSDK.jar`拷贝到`libs/`文件夹
 
-`Android Studio`需要如下配置：
-
 配置app级别build.gradle,在dependencies中增加以下compile
  - compile 'com.android.support:appcompat-v7:xx.xx'
  - compile files('libs/PayssionSDK.jar')
-
-`Eclipse`需要如下配置：
-
- - 导入android-support-v7-appcompat库.
- - 将`PayssionSDK.jar`Add to Build Path.    
 
 ##### 2. 在`AndroidManifest.xml`文件中添加以下权限:
 ```xml
@@ -34,7 +27,7 @@
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 ```
-**以及以下Activity**
+**以及以下Activity声明**
 ```xml
 <activity
     android:name="com.payssion.android.sdk.PayssionActivity"
@@ -127,6 +120,34 @@ MainActivity.this.startActivityForResult(intent, 0);
         super.onActivityResult(requestCode, resultCode, data);
     }
 ```
+
+## 返回数据说明
+
+###1.参数说明
+
+返回数据封装为PayResponse,通过Intent.getSerializableExtra(PayssionActivity.RESULT_DATA)方法获取
+
+| 方法名  	      | 参数名         | 类型          | 释义              | 详解                   |
+| :------------ | :------------ |:------------ |:----------- |:------------------------- |
+| getTransactionId   | transaction_id     | String      | 交易id|Payssion 交易号 id,如订单异常,需提供此 id
+| getOrderId   | order_id     | String      | 订单id| 客户发起支付时自定义的订单 id。注意与`transaction_id`区分
+| getState| state     | String      | 支付状态| 支付完成状态，准确支付结果以notify_url通知为准
+| getAmount| amount     | String      | 订单金额|
+
+###2.ResultCode说明
+
+| 参数名  	        | 释义       | 类型 | 值
+| :-------------- | :--------- | :--------- | :--------- |
+| RESULT_OK       | 支付成功    | int| 770
+| RESULT_CANCELED | 支付取消    | int| 771
+| RESULT_ERROR    | 支付异常    | int| 772
+
+
+###3.注意事项
+1. 需要注意的是这里的支付成功意味着支付流程成功，因为银行间结算有延迟，所以最终的支付结果要以您后台配置的[`notify_url`](https://payssion.com/en/docs/#api-reference-payment-notifications)收到的通知为准。
+
+2. 在接收`notify_url`数据时需验证签名`notify_sig`。详情请查阅[文档](https://payssion.com/en/docs/#api-reference-signature)以及[Demo](https://github.com/payssion/payssion-php/blob/master/samples/sample_postback.php)。
+
 ##PMID设置
 ##### 1. 您可以设置仅支持`一种支付方式`.  
 在创建交易的`PayRequest`中设置  
