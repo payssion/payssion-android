@@ -144,9 +144,9 @@ MainActivity.this.startActivityForResult(intent, 0);
 
 
 ###3.注意事项
-1. 需要注意的是这里的支付成功意味着支付流程成功，因为银行间结算有延迟，所以最终的支付结果要以您后台配置的[`notify_url`](https://payssion.com/en/docs/#api-reference-payment-notifications)收到的通知为准。
+1. 需要注意的是这里的支付成功意味着支付流程成功，因为银行间结算有延迟，所以最终的支付结果要以您后台配置的[`otify_url`](https://payssion.com/en/docs/#api-reference-payment-notifications)([中文请点击](https://payssion.com/cn/docs/#api-notifications))收到的通知为准。
 
-2. 在接收`notify_url`数据时需验证签名`notify_sig`。详情请查阅[文档](https://payssion.com/en/docs/#api-reference-signature)以及[Demo](https://github.com/payssion/payssion-php/blob/master/samples/sample_postback.php)。
+2. 在接收`notify_url`数据时需验证签名`notify_sig`。详情请[查阅文档](https://payssion.com/en/docs/#api-reference-signature)([中文请点击](https://payssion.com/cn/docs/#api-api-signature))以及[Demo](https://github.com/payssion/payssion-php/blob/master/samples/sample_postback.php)。
 
 ##PMID设置
 ##### 1. 您可以设置仅支持`一种支付方式`.  
