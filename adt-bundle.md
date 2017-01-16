@@ -117,10 +117,15 @@ MainActivity.this.startActivityForResult(intent, 0);
 1. 需要注意的是这里的支付成功意味着支付流程成功，因为银行间结算有延迟，所以最终的支付结果要以您后台配置的`[notify_url](https://payssion.com/en/docs/#api-reference-payment-notifications)`收到的通知为准。
 
 2. 本版本SDK在发送`notify_url`数据时的参数`notify_sig`与[文档](https://payssion.com/en/docs/#api-reference-signature)有区别。
-需将加密规则`api_key|pm_id|amount|currency|order_id|state|sercret_key`改为`api_key|pm_id|amount|currency|track_id||state|sercret_key`。请将这一点告知负责接受`notify_url`的负责人。
+需将加密规则`api_key|pm_id|amount|currency|order_id|state|sercret_key`改为`api_key|pm_id|amount|currency|track_id||state|sercret_key`。请将这一点告知负责接收`notify_url`的负责人。
+
+3. 接收`notify_url`的[Demo](https://github.com/payssion/payssion-php/blob/master/samples/sample_postback.php)。
+注意将接收参数`order_id`改为`track_id`。
+
+![alt text](/img/_track_id.png "track_id")
 
 
 ##PMID设置
 ##### 1. 设置多个pmid
 该版本PayRequest().setPMId(pmid)方法每次只能传入一个pmid，如需传入多个。建议将pmid数据封装并通过ListView展示，待用户点击某个item后将pmid传入PayRequest，后发起支付。或自行按业务需求设计逻辑。
-我们为封装支付方式提供所需[部分图片](/source/img/pm)、[部分pmid和名称](https://payssion.com/en/docs/#api-reference-pm-id)，完整数据请咨询我司商务经理。
+我们为封装支付方式提供所需[部分图片](https://pan.baidu.com/s/1mhMppjE)、[部分pmid和名称](https://payssion.com/en/docs/#api-reference-pm-id)，完整数据请咨询我司商务经理。
