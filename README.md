@@ -1,9 +1,9 @@
 
 # PayssionSDK
 
-[中文文档](https://github.com/payssion/payssion-android/blob/master/README_ZH.md)
+[中文文档](android-studio.md)
 
-[FAQ中文](https://github.com/payssion/payssion-android/blob/master/FAQ_ZH.md)
+[FAQ中文](FAQ_ZH.md)
 
 ## Installation
 ##### 1. Copy `PayssionSDK.jar` to the `libs/` folder.
@@ -49,6 +49,22 @@ Add the following to your `build.gradle`:
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 ```
+## Parameters note
+
+| Function name | Parameter name| Type         | Required     | Example| Description      |
+| :------------ | :------------ |:------------ |:--- |:--------------- |:---------------- |
+| setLiveMode   | live_mode     | boolean      | No           | true/false        | Program running environment |
+| setAPIKey     | api_key       | string       | Yes           | 5963a4c1c35c2a8e  | App id  
+| setSecretKey  | secret_key    | string       | Yes           | demo456           | secret key     
+| setOrderId    | order_id      | string       | Yes           | 1989093-251658248 | order id    
+| setAmount     | amount        | double       | Yes           | 1.99              | total payment amount
+| setCurrency   | currency      | string       | Yes           | USD、CNY           | three-letter abbreviation
+| setPMId       | pmid          | string       | Yes           | sofort             | payment method id | 
+| setDescription| description   | string       | Yes           | game recharge #123 | payment description | 
+| setPayerEmail | payer_email   | string       | Yes           | example@demo.com   | payer email | 
+| setPayerName  | payer_name    | string       | Yes           | example name       | payer name | 
+| setPayerRef   | payer_ref     | string       | Yes           | example ref        | payer other information | 
+
 ## Usage
 ### Create a transaction
 Let's say you create a transaction in `MainActivity`.
@@ -102,6 +118,32 @@ You need to overide `onActivityResult` method in `MainActivity`.
         super.onActivityResult(requestCode, resultCode, data);
     }
 ```
+
+## Result Data Note
+
+###1.result parameters note
+
+The return data package is PayResponse.class ,you can get it by Intent.getSerializableExtra(PayssionActivity.RESULT_DATA)
+
+| Function name       | Parameter name   | Type         | Description |
+| :--------------     | :-------------   |:------------ |:----------- |
+| getTransactionId   | transaction_id    | String       | transaction id       |
+| getOrderId         | order_id          | String       | order id             |
+| getState           | state             | String       | order state          |
+| getAmount          | amount            | String       | order amount         |
+
+###2.Result Code Note
+
+| Parameter name  | Description| Type | Value
+| :-------------- | :---------------- | :--------- | :--------- |
+| RESULT_OK       | payment success    | int| 770
+| RESULT_CANCELED | Payment cancellation    | int| 771
+| RESULT_ERROR    | Payment exception    | int| 772
+
+
+###3.Tips
+1. Payssion will post the following parameters to your notify url when the payment state changes.Please read the document.[`otify_url`](https://payssion.com/en/docs/#api-reference-payment-notifications)
+
 ##PMIDSetting
 ##### 1. You can set supports only one payment for `PayRequest`   
 
