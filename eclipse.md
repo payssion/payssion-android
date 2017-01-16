@@ -2,18 +2,28 @@
 ## 安装
 
 **使用`Eclipse + ADT Plugin + sdk`的开发者需要升级开发环境。步骤如下** 
-1. 升级ADT Plugin。[这里](https://developer.android.com/studio/tools/sdk/eclipse-adt.html#notes)是ADT Plugin发布记录。已知最高版本为23.0.7，请安装该版本。
- - ADT Plugin
- - 离线安装[地址](/source/adt/).
+
+**1.** 升级ADT Plugin。[这里](https://developer.android.com/studio/tools/sdk/eclipse-adt.html#notes)是ADT Plugin发布记录。最新版本为23.0.7，请安装该版本。
+
+ - 离线安装[地址](https://pan.baidu.com/s/1dFBo35n).
  - 在线安装地址`http://dl.google.com/android/ADT-23.0.7.zip`
 
 安装方法请自行搜索。
 
-2. Android sdk下载[地址]().
+**2.** 升级[support](https://developer.android.com/topic/libraries/support-library/setup.html)库，以及编译工具Build-tools。
 
+ - 通过Android SDK Manager下载最新的Android Support Library。
+ 
+  ![alt text](/img/_support.png "support")
+ - 通过Android SDK Manager将SDK及编译工具更新到最高版本
+ 
+  ![alt text](/img/_build-tools.png "build-tools")
   
-
-
+  
+  
+或者直接将Android sdk替换为以下版本
+  
+Android sdk下载[地址](https://pan.baidu.com/s/1i5JnMmx).
 
 **开发环境升级后请继续阅读**
 
