@@ -1,9 +1,9 @@
 
 # PayssionSDK
 
-[中文文档](android-studio.md)
+[中文文档](/md/android-studio.md)
 
-[FAQ中文](FAQ_ZH.md)
+[FAQ中文](/FAQ/FAQ_ZH.md)
 
 ## Installation
 ##### 1. Copy `PayssionSDK.jar` to the `libs/` folder.
