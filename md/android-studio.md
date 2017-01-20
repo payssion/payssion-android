@@ -5,11 +5,11 @@
 
 - **ADT Bundle**
 
-   使用ADT Bundle的开发者请参考[本文档](/adt-bundle.md)
+   使用ADT Bundle的开发者请参考[本文档](/md/adt-bundle.md)
 
 - **Eclipse + ADT plugin + sdk**
    
-   使用Eclipse + ADT plugin + sdk的开发者请参考[本文档](/eclipse.md)
+   使用Eclipse + ADT plugin + sdk的开发者请参考[本文档](/md/eclipse.md)
 
 - **Android Studio**
 
