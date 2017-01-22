@@ -91,3 +91,18 @@ Payssion.getDetail(new GetDetailRequest()
 ##### Q13. 在弹出的支付列表界面选择其他国家的支付方式并成功支付后支付列表就显示该国家的支付方式了
 
 **A13.** 这是SDK的正常逻辑，以方便用户使用。
+
+##### Q14. 在使用了`-libraryjars`,`-dontwarn`,`-keep class`等避免jar包混淆的措施后，依然报错。不能正常打包。
+
+**A14.** [请点击下载](https://pan.baidu.com/s/1boLmaU7)，解压`proguard.zip`出的文件替换到`你本地sdk/tools/proguard/`，并重启IDE后重新打包
+
+
+
+
+
+
+
+
+
+
+
