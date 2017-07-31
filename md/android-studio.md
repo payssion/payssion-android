@@ -68,7 +68,7 @@
 | setPayerRef   | payer_ref     | string       | 否           | example ref        | 付款方其他信息 | 
 
 ## 使用
-###创建交易
+### 创建交易
 在`MainActivity`通过以下代码创建交易
 ```java
 Intent intent = new Intent(MainActivity.this, PayssionActivity.class);
@@ -86,7 +86,7 @@ intent.putExtra(PayssionActivity.ACTION_REQUEST,
         .setPayerName(payerName));
 MainActivity.this.startActivityForResult(intent, 0);
 ```
-###处理返回数据
+### 处理返回数据
 需要在`MainActivity`重写`onActivityResult`函数
 ```java
     @Override
@@ -123,18 +123,24 @@ MainActivity.this.startActivityForResult(intent, 0);
 
 ## 返回数据说明
 
-###1.参数说明
+### 1.参数说明
 
 返回数据封装为PayResponse,通过Intent.getSerializableExtra(PayssionActivity.RESULT_DATA)方法获取
 
 | 方法名  	      | 参数名         | 类型          | 释义              | 详解                   |
 | :------------ | :------------ |:------------ |:----------- |:------------------------- |
 | getTransactionId   | transaction_id     | String      | 交易id|Payssion 交易号 id,如订单异常,需提供此 id
-| getOrderId   | order_id     | String      | 订单id| 客户发起支付时自定义的订单 id。注意与`transaction_id`区分
-| getState| state     | String      | 支付状态| 支付完成状态，准确支付结果以notify_url通知为准
+| getPMId | pm_id     | String      | 支付方式| 
 | getAmount| amount     | String      | 订单金额|
+| getCurrency| currency     | String      | 支付货币| 
+| getOrderId   | order_id     | String      | 订单id| 客户发起支付时自定义的订单 id。注意与`transaction_id`区分
+| getPaid| paid     | String      | 已支付金额| 
+| getNet| net     | String      |扣除先后续费后净额 | 
+| getState| state     | int      | 支付状态| 支付完成状态，准确支付结果以notify_url通知为准
+| getStateStr | stateStr |String |支付状态|
+| getCreated | created |int |创建时间|
 
-###2.ResultCode说明
+### 2.ResultCode说明
 
 | 参数名  	        | 释义       | 类型 | 值
 | :-------------- | :--------- | :--------- | :--------- |
@@ -143,12 +149,12 @@ MainActivity.this.startActivityForResult(intent, 0);
 | RESULT_ERROR    | 支付异常    | int| 772
 
 
-###3.注意事项
+### 3.注意事项
 1. 需要注意的是这里的支付成功意味着支付流程成功，因为银行间结算有延迟，所以最终的支付结果要以您后台配置的[`otify_url`](https://payssion.com/en/docs/#api-reference-payment-notifications)([中文请点击](https://payssion.com/cn/docs/#api-notifications))收到的通知为准。
 
 2. 在接收`notify_url`数据时需验证签名`notify_sig`。详情请[查阅文档](https://payssion.com/en/docs/#api-reference-signature)([中文请点击](https://payssion.com/cn/docs/#api-api-signature))以及[Demo](https://github.com/payssion/payssion-php/blob/master/samples/sample_postback.php)。
 
-##PMID设置
+## PMID设置
 ##### 1. 您可以设置仅支持`一种支付方式`.  
 在创建交易的`PayRequest`中设置  
 
