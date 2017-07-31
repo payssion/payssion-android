@@ -84,7 +84,7 @@ intent.putExtra(PayssionActivity.ACTION_REQUEST,
         .setPayerName(payerName));
 MainActivity.this.startActivityForResult(intent, 0);
 ```
-###Handle result
+### Handle result
 You need to overide `onActivityResult` method in `MainActivity`.
 ```java
     @Override
@@ -121,18 +121,24 @@ You need to overide `onActivityResult` method in `MainActivity`.
 
 ## Result Data Note
 
-###1.result parameters note
+### 1.result parameters note
 
 The return data package is PayResponse.class ,you can get it by Intent.getSerializableExtra(PayssionActivity.RESULT_DATA)
 
 | Function name       | Parameter name   | Type         | Description |
 | :--------------     | :-------------   |:------------ |:----------- |
 | getTransactionId   | transaction_id    | String       | transaction id       |
+| getPMId 		| pm_id     	| String      | The Payment method id| 
+| getAmount		| amount     	| String      | order amount|
+| getCurrency		| currency     | String      | currency| 
 | getOrderId         | order_id          | String       | order id             |
-| getState           | state             | String       | order state          |
-| getAmount          | amount            | String       | order amount         |
+| getPaid		| paid     	| String      | The amount which the user has paid| 
+| getNet		| net     	| String      |The amount after decucting the fees | 
+| getState           | state             | Int       | order state          |
+| getStateStr 		| stateStr 	|String 	|	order state 	|
+| getCreated 		| created 	|Int 		|created time|
 
-###2.Result Code Note
+### 2.Result Code Note
 
 | Parameter name  | Description| Type | Value
 | :-------------- | :---------------- | :--------- | :--------- |
@@ -141,7 +147,7 @@ The return data package is PayResponse.class ,you can get it by Intent.getSerial
 | RESULT_ERROR    | Payment exception    | int| 772
 
 
-###3.Tips
+### 3.Tips
 1. Payssion will post the following parameters to your notify url when the payment state changes.Please read the document.[`otify_url`](https://payssion.com/en/docs/#api-reference-payment-notifications)
 
 ##PMIDSetting
