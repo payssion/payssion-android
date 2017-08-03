@@ -137,6 +137,7 @@ The return data package is PayResponse.class ,you can get it by Intent.getSerial
 | getState           | state             | Int       | order state          |
 | getStateStr 		| stateStr 	|String 	|	order state 	|
 | getCreated 		| created 	|Int 		|created time|
+| getDescription 	| description   |String 	|description|
 
 ### 2.Result Code Note
 
