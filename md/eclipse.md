@@ -150,6 +150,7 @@ MainActivity.this.startActivityForResult(intent, 0);
 | getState| state     | int      | 支付状态| 支付完成状态，准确支付结果以notify_url通知为准
 | getStateStr | stateStr |String |支付状态|
 | getCreated | created |int |创建时间|
+| getDescription | description |String |订单描述|
 
 ### 2.ResultCode说明
 
