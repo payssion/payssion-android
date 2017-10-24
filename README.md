@@ -174,15 +174,21 @@ Image format is`.png`, the picture names for the payment method of `PMID`.
 ```java
    /**
      * set enable payment methods
-     * @param enablePM enable PMID.For more than one can be used "to" split open。For example"pm_idA|pm_idB|pm_idC"
+     * @param pm_id enable PMID.For more than one can be used "to" split open。For example"pm_idA|pm_idB|pm_idC"
      */
-    PayssionConfig.enablePM(String enablePM);
+    PayssionConfig.setPM(String pm_id);
 
    /**
      * set disable payment methods
      * @param disablePM disable PMID.For more than one can be used "to" split open。For example"pm_idA|pm_idB|pm_idC"
      */
     PayssionConfig.disablePM(String disenablePM);
+    
+    /**
+     * set default country
+     * @param country 
+     */
+    PayssionConfig.setDefaultCountry(String country);
 ```
 ### Set Theme Color
 You can set theme color following this.
