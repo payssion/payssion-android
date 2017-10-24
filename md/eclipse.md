@@ -190,15 +190,21 @@ MainActivity.this.startActivityForResult(intent, 0);
 ```java
    /**
      * 设置需要支持的支付方式
-     * @param enablePM 需支持的PMID.如需多个可用“|”分割开。比如"pm_idA|pm_idB|pm_idC"
+     * @param 需支持的PMID.如需多个可用“|”分割开。比如"pm_idA|pm_idB|pm_idC"
      */
-    PayssionConfig.enablePM(String enablePM);
+    PayssionConfig.setPM(String pm_id);
 
    /**
      * 设置不需要支持的支付方式
      * @param disEnablePM 不需支持的PMID.如需多个可用“|”分割开。比如"pm_idA|pm_idB|pm_idC"
      */
     PayssionConfig.disenablePM(String disenablePM);
+    
+    /**
+     * 设置缺省国家
+     * @param country 设置默认支持的国家
+     */
+    PayssionConfig.setDefaultCountry(String country);
 ```
 ## 设置主题颜色
 您可以通过以下函数设置Theme颜色.
