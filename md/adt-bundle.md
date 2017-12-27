@@ -26,17 +26,16 @@
 
 | 方法名  	      | 参数名         | 类型         | 必填          | 示例          | 释义          | 详解         |
 | :------------ | :------------ |:------------ |:--- |:--------------- |:---------------- |:--------------------- |
-| setLiveMode   | live_mode     | boolean      | 否           | true/false    | 程序运行环境 |测试环境传false.正式环境传true.默认正式环境
-| setAPIKey     | api_key       | string       | 是           | 5963a4c1c35c2a8e  | App id    | 注意区分对应环境的api_key
-| setSecretKey  | secret_key    | string       | 是           | demo456           | 密钥       | 注意区分对应环境的secret_key
-| setTrackId    | track_id      | string       | 是           | 1989093-251658248 | 订单id     | 需自定义，且长度不超过32位
+| setLiveMode   | live_mode     | boolean      | 否           | true/false    | App所在环境 |测试环境传false；正式环境传true。默认正式环境 |
+| setAPIKey     | api_key       | string       | 是           | 5963a4c1c35c2a8e  | App id    | 注意区分对应环境的api_key |
+| setSecretKey  | secret_key    | string       | 是           | demo456           | 密钥    | 注意区分对应环境secret_key  |
+| setTrackId    | track_id      | string       | 是           | 123       | 订单号     | 长度不超过32位
 | setAmount     | amount        | double       | 是           | 1.99              | 订单总金额  | 
-| setCurrency   | currency      | string       | 是           | USD、CNY等         | 货币种类    | 大写，币种缩写可搜索公共信息
-| setPMId       | pmid          | string       | 是           | sofort             | 支付方式id | [供参考](https://payssion.com/en/docs/#api-reference-pm-id)。具体询问我司商务经理 
-| setDescription| description   | string       | 是           | game recharge #123 | 订单描述 | 
-| setPayerEmail | payer_email   | string       | 是           | example@demo.com   | 付款方邮箱 | 南美地区支付必须填写邮箱。具体询问我司商务经理
-| setPayerName  | payer_name    | string       | 是           | example name       | 付款方姓名 | 
-| setPayerRef   | payer_ref     | string       | 否           | example ref        | 付款方其他信息 | 
+| setCurrency   | currency      | string       | 是           | USD        | 货币种类    | 大写，币种缩写可搜索公共信息
+| setPMId       | pm_id          | string       | 是          | sofort             | 支付方式id | [供参考](https://payssion.com/en/docs/#api-reference-pm-id)。具体询问我司商务经理 |
+| setDescription| description   | string       | 是           | game recharge #123 | 订单描述 | |
+| setPayerEmail | payer_email   | string       | 是           | example@demo.com   | 付款方邮箱 | 南美地区支付必须填写邮箱。具体询问我司商务经理 |
+| setPayerName  | payer_name    | string       | 是           | John Smith       | 付款方姓名 || 
 
 ## 使用
 ###创建交易

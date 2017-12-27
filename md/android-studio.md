@@ -55,17 +55,16 @@
 
 | 方法名  	      | 参数名         | 类型         | 必填          | 示例          | 释义          | 详解         |
 | :------------ | :------------ |:------------ |:--- |:--------------- |:---------------- |:--------------------- |
-| setLiveMode   | live_mode     | boolean      | 否           | true/false    | 程序运行环境 |测试环境传false.正式环境传true.默认正式环境
-| setAPIKey     | api_key       | string       | 是           | 5963a4c1c35c2a8e  | App id    | 注意区分对应环境的api_key
-| setSecretKey  | secret_key    | string       | 是           | demo456           | 密钥       | 注意区分对应环境的secret_key
-| setOrderId    | order_id      | string       | 是           | 1989093-251658248 | 订单id     | 需自定义，且长度不超过32位
-| setAmount     | amount        | double       | 是           | 1.99              | 订单总金额  | 
-| setCurrency   | currency      | string       | 是           | USD、CNY等         | 货币种类    | 大写，币种缩写可搜索公共信息
-| setPMId       | pmid          | string       | 是           | sofort             | 支付方式id | [供参考](https://payssion.com/en/docs/#api-reference-pm-id)。具体询问我司商务经理 
-| setDescription| description   | string       | 是           | game recharge #123 | 订单描述 | 
-| setPayerEmail | payer_email   | string       | 是           | example@demo.com   | 付款方邮箱 | 南美地区支付必须填写邮箱。具体询问我司商务经理
-| setPayerName  | payer_name    | string       | 否           | example name       | 付款方姓名 | 
-| setPayerRef   | payer_ref     | string       | 否           | example ref        | 付款方其他信息 | 
+| setLiveMode   | live_mode     | boolean      | 否           | true/false    | App所在环境 |测试环境传false；正式环境传true。默认正式环境 |
+| setAPIKey     | api_key       | string       | 是           | 5963a4c1c35c2a8e  | App id    | 注意区分对应环境的api_key|
+| setSecretKey  | secret_key    | string       | 是           | demo456           | 密钥       | 注意区分对应环境的secret_key |
+| setOrderId    | order_id      | string       | 是           | 123         | 订单号     | 长度不超过64位 |
+| setAmount     | amount        | double       | 是           | 1.99        | 订单总金额  | |
+| setCurrency   | currency      | string       | 是           | USD         | 货币种类    | 大写，币种缩写可搜索公共信息 |
+| setPMId       | pm_id          | string       | 是           | sofort             | 支付方式id | [供参考](https://payssion.com/en/docs/#api-reference-pm-id)。具体询问我司商务经理 |
+| setDescription| description   | string       | 是           | game recharge #123 | 订单描述 | |
+| setPayerEmail | payer_email   | string       | 是           | example@mail.com   | 付款方邮箱 | 南美地区支付必须填写邮箱。具体询问我司商务经理 |
+| setPayerName  | payer_name    | string       | 否           | John Smith       | 付款方姓名 |  |
 
 ## 使用
 ### 创建交易
@@ -151,7 +150,7 @@ MainActivity.this.startActivityForResult(intent, 0);
 
 
 ### 3.注意事项
-1. 需要注意的是这里的支付成功意味着支付流程成功，因为银行间结算有延迟，所以最终的支付结果要以您后台配置的[`otify_url`](https://payssion.com/en/docs/#api-reference-payment-notifications)([中文请点击](https://payssion.com/cn/docs/#api-notifications))收到的通知为准。
+1. 需要注意的是这里的支付成功意味着支付流程成功，因为银行间结算有延迟，所以最终的支付结果要以您后台配置的[`notify_url`](https://payssion.com/en/docs/#api-reference-payment-notifications)([中文请点击](https://payssion.com/cn/docs/#api-notifications))收到的通知为准。
 
 2. 在接收`notify_url`数据时需验证签名`notify_sig`。详情请[查阅文档](https://payssion.com/en/docs/#api-reference-signature)([中文请点击](https://payssion.com/cn/docs/#api-api-signature))以及[Demo](https://github.com/payssion/payssion-php/blob/master/samples/sample_postback.php)。
 
