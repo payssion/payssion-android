@@ -32,6 +32,7 @@
 <activity
     android:name="com.payssion.android.sdk.PayssionActivity"
     android:label="@string/app_name"
+    android:configChanges="orientation|keyboardHidden|screenSize"
     android:theme="@style/Theme.PayssionTrans"/>
 <activity
     android:name="com.payssion.android.sdk.PaymentWebActivity"
