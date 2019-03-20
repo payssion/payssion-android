@@ -139,13 +139,13 @@ The return data package is PayResponse.class ,you can get it by Intent.getSerial
 | getCreated 		| created 	|Int 		|created time|
 | getDescription 	| description   |String 	|description|
 
-### 2.Result Code Note
+### 2.Result Code
 
 | Parameter name  | Description| Type | Value
 | :-------------- | :---------------- | :--------- | :--------- |
-| RESULT_OK       | payment success    | int| 770
-| RESULT_CANCELED | Payment cancellation    | int| 771
-| RESULT_ERROR    | Payment exception    | int| 772
+| RESULT_OK       | The payment activity is finished and the payment status is unknown | int| 770
+| RESULT_CANCELED | Payment canceled    | int| 771
+| RESULT_ERROR    | Payment error    | int| 772
 
 
 ### 3.Tips

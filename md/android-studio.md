@@ -145,9 +145,9 @@ MainActivity.this.startActivityForResult(intent, 0);
 
 | 参数名  	        | 释义       | 类型 | 值
 | :-------------- | :--------- | :--------- | :--------- |
-| RESULT_OK       | 支付成功    | int| 770
-| RESULT_CANCELED | 支付取消    | int| 771
-| RESULT_ERROR    | 支付异常    | int| 772
+| RESULT_OK       | 正常返回，但不代表支付成功，具体支付状态以异步通知为准    | int| 770
+| RESULT_CANCELED | 支付被取消    | int| 771
+| RESULT_ERROR    | 支付错误    | int| 772
 
 
 ### 3.注意事项
