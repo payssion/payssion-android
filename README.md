@@ -55,8 +55,7 @@ Add the following to your `build.gradle`:
 | Function name | Parameter name| Type         | Required     | Example| Description      |
 | :------------ | :------------ |:------------ |:--- |:--------------- |:---------------- |
 | setLiveMode   | live_mode     | boolean      | No            | true/false        | App environment |
-| setAPIKey     | api_key       | string       | Yes           | 5963a4c1c35c2a8e  | App id  
-| setSecretKey  | secret_key    | string       | Yes           | demo456           | secret key     
+| setAPIKey     | api_key       | string       | Yes           | 5963a4c1c35c2a8e  | App id     
 | setOrderId    | order_id      | string       | Yes           | 123               | order id    
 | setAmount     | amount        | double       | Yes           | 1.99              | total payment amount
 | setCurrency   | currency      | string       | Yes           | USD               | three-letter abbreviation
@@ -79,7 +78,6 @@ intent.putExtra(PayssionActivity.ACTION_REQUEST,
         .setPMId(pmId)
         .setDescription(description)
         .setOrderId(orderId) //Your order id
-        .setSecretKey(secreKey)
         .setPayerEmail(payerEmail)
         .setPayerName(payerName));
 MainActivity.this.startActivityForResult(intent, 0);

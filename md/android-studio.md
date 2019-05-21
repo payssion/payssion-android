@@ -58,7 +58,6 @@
 | :------------ | :------------ |:------------ |:--- |:--------------- |:---------------- |:--------------------- |
 | setLiveMode   | live_mode     | boolean      | 否           | true/false    | App所在环境 |测试环境传false；正式环境传true。默认正式环境 |
 | setAPIKey     | api_key       | string       | 是           | 5963a4c1c35c2a8e  | App id    | 注意区分对应环境的api_key|
-| setSecretKey  | secret_key    | string       | 是           | demo456           | 密钥       | 注意区分对应环境的secret_key |
 | setOrderId    | order_id      | string       | 是           | 123         | 订单号     | 长度不超过64位 |
 | setAmount     | amount        | double       | 是           | 1.99        | 订单总金额  | |
 | setCurrency   | currency      | string       | 是           | USD         | 货币种类    | 大写，币种缩写可搜索公共信息 |
@@ -81,7 +80,6 @@ intent.putExtra(PayssionActivity.ACTION_REQUEST,
         .setPMId(pmId)
         .setDescription(description)
         .setOrderId(orderId) //您的订单Id
-        .setSecretKey(secreKey)//请注意区分测试环境和正式环境的SecretKey
         .setPayerEmail(payerEmail)
         .setPayerName(payerName));
 MainActivity.this.startActivityForResult(intent, 0);
