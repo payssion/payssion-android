@@ -27,6 +27,13 @@
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 ```
+
+如果你的app的targeting API level是28 (Android 9.0)或以上，你需要在`AndroidManifest.xml`的`<application>`标签中增加以下声明：
+
+```xml
+<uses-library android:name="org.apache.http.legacy" android:required="false" />
+```
+
 **以及以下Activity声明**
 ```xml
 <activity

@@ -25,6 +25,12 @@ Add the following to your `build.gradle`:
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 ```
+
+If your app is targeting API level 28 (Android 9.0) or above, you must include the following declaration within the <application> element of AndroidManifest.xml.
+
+```xml
+<uses-library android:name="org.apache.http.legacy" android:required="false" />
+```
 **and This Activity**
 ```xml
 <activity
