@@ -95,7 +95,7 @@ You need to overide `onActivityResult` method in `MainActivity`.
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.v(this.getClass().getSimpleName(), "onActivityResult");
         switch (resultCode) {
-        case PayssionActivity.RESULT_OK:
+        case PayssionActivity.RESULT_PENDING:
             if (null != data) {
                 PayResponse response = (PayResponse)data.getSerializableExtra(PayssionActivity.RESULT_DATA);
                 if (null != response) {
@@ -147,7 +147,7 @@ The return data package is PayResponse.class ,you can get it by Intent.getSerial
 
 | Parameter name  | Description| Type | Value
 | :-------------- | :---------------- | :--------- | :--------- |
-| RESULT_OK       | The payment activity is finished and the payment status is unknown | int| 770
+| RESULT_PENDING       | The payment activity is finished and the payment status is unknown | int| 770
 | RESULT_CANCELED | Payment canceled    | int| 771
 | RESULT_ERROR    | Payment error    | int| 772
 

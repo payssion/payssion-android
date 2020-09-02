@@ -103,7 +103,7 @@ MainActivity.this.startActivityForResult(intent, 0);
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.v(this.getClass().getSimpleName(), "onActivityResult");
         switch (resultCode) {
-        case PayssionActivity.RESULT_OK:
+        case PayssionActivity.RESULT_PENDING:
             if (null != data) {
                 PayResponse response = (PayResponse)data.getSerializableExtra(PayssionActivity.RESULT_DATA);
                 if (null != response) {
@@ -154,7 +154,7 @@ MainActivity.this.startActivityForResult(intent, 0);
 
 | 参数名  	        | 释义       | 类型 | 值
 | :-------------- | :--------- | :--------- | :--------- |
-| RESULT_OK       | 正常返回，但不代表支付成功，具体支付状态以异步通知为准    | int| 770
+| RESULT_PENDING       | 正常返回，但不代表支付成功，具体支付状态以异步通知为准    | int| 770
 | RESULT_CANCELED | 支付取消    | int| 771
 | RESULT_ERROR    | 支付异常    | int| 772
 

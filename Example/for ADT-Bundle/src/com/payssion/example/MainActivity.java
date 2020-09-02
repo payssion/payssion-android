@@ -70,29 +70,10 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				PMItem item = mPMList.get(position);
-				String currency = item.getCurrency();
-				if (null == currency) {
-					currency = "USD";
-				}
-				double amount = 1;
-				if ("MYR" == currency) {
-					amount = 5;
-				}
-				String ref = "";
-				String pmid = item.getPMId();
-				if ("qiwi" == pmid) {
-					//ref = "tel:+12819784237";
-				} else if ("onecard" == pmid) {
-					amount = 0.01;
-				}  else if ("cashu" == pmid) {
-					amount = 0.01;
-				} else if (null!= pmid && pmid.endsWith("_br")){
-					//ref = "00003456789";
-				} else if ("razorpay_in" == pmid) {
-					//ref = "tel:+12819784237";
-					currency = "INR";
-					amount = 100;
-				}
+				String amount = "0.01";
+                String currency = "USD";
+                String payer_email = "";// your payer email
+                String payer_name = "";// your payer email
 				Intent intent = new Intent(MainActivity.this, PayssionActivity.class);
 				intent.putExtra(PayssionActivity.ACTION_REQUEST, 
 						new PayRequest()
@@ -101,12 +82,9 @@ public class MainActivity extends Activity {
 				        .setCurrency(currency)
 				        .setPMId(item.getPMId())
 				        .setDescription("test")
-				        .setTrackId("123") // your order id
-				        .setSecretKey("demo456")
-				        .setPayerEmail("habertlee@mail.com")
-				        .setPayerRef(ref)
-				        .setPayerName("habert lee")
-				        );
+				        .setOrderId("123") // your order id
+				        .setPayerEmail(payer_email)
+				        .setPayerName(payer_name));
 				MainActivity.this.startActivityForResult(intent, 0);
 				mPMSelectLayout.postDelayed(new Runnable() {
 					
@@ -159,60 +137,14 @@ public class MainActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		Log.v(this.getClass().getSimpleName(), "onActivityResult");
 		switch (resultCode) {
-		case PayssionActivity.RESULT_OK:
+		case PayssionActivity.RESULT_PENDING:
 			if (null != data) {
 				PayResponse response = (PayResponse)data.getSerializableExtra(PayssionActivity.RESULT_DATA);
 				if (null != response) {
                     String transId = response.getTransactionId(); //get Payssion transaction id
-					String orderId = response.getTrackId(); //get your order id
+					String orderId = response.getOrderId(); //get your order id
                     //you will have to query the payment state with the transId or orderId from your server
                     //as we will notify you server whenever there is a payment state change
-					
-					//you can query in the following way if you don't own a server
-					Payssion.getDetail(new GetDetailRequest()
-					.setAPIKey("5963a4c1c35c2a8e")
-					.setSecretKey("286a0b747c946e3d902f017cf75d3bd1")
-					.setTransactionId(transId)
-					.setTrackId(orderId), new PayssionResponseHandler() {
-						@Override
-						public void onError(int arg0, String arg1,
-								Throwable arg2) {
-							// TODO Auto-generated method stub
-							
-						}
-
-						@Override
-						public void onFinish() {
-							// TODO Auto-generated method stub
-							
-						}
-
-						@Override
-						public void onStart() {
-							// TODO Auto-generated method stub
-							
-						}
-
-						@Override
-						public void onSuccess(PayssionResponse response) {
-							if (response.isSuccess()) {
-								GetDetailResponse detail = (GetDetailResponse)response;
-								if (null != detail) {
-									Toast.makeText(MainActivity.this, detail.getStateStr(), Toast.LENGTH_SHORT).show();
-									if (PPaymentState.COMPLETED == detail.getState()) {
-										//the payment was paid successfully
-									} else if (PPaymentState.FAILED == detail.getState()) {
-										//the payment was failed
-									} else if (PPaymentState.PENDING == detail.getState()) {
-										//the payment was still pending, please save the transId and orderId
-										//and recheck the state later as the payment may not be confirmed instantly
-									}
-								}
-							} else {
-								Toast.makeText(MainActivity.this, response.getDescription(), Toast.LENGTH_SHORT).show();
-							}
-						}
-					});
 				} else {
 					//should never go here
 				}

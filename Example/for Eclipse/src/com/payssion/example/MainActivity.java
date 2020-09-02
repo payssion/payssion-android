@@ -38,9 +38,10 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				double amount = 0.01;
+			  String amount = "0.01";
               String currency = "USD";
-              String ref = "";
+              String payer_email = "";// your payer email
+              String payer_name = "";// your payer email
               Intent intent = new Intent(MainActivity.this,
                      PayssionActivity.class);
 
@@ -53,9 +54,8 @@ public class MainActivity extends Activity {
 		                      .setCurrency(currency)
 		                      .setDescription("Demo Payment")
 		                      .setOrderId("123")// your order id
-		                      .setSecretKey("demo456")
-		                      .setPayerEmail("habertlee@mail.com")
-		                      .setPayerRef(ref).setPayerName("habert lee"));
+		                      .setPayerEmail(payer_email)
+                              .setPayerName(payer_name));
               MainActivity.this.startActivityForResult(intent, 0);
 			}
 		});
@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		Log.v(this.getClass().getSimpleName(), "onActivityResult");
 		switch (resultCode) {//4009105668
-		case PayssionActivity.RESULT_OK:
+		case PayssionActivity.RESULT_PENDING:
 			if (null != data) {
 				PayResponse response = (PayResponse)data.getSerializableExtra(PayssionActivity.RESULT_DATA);
 				if (null != response) {
@@ -73,52 +73,6 @@ public class MainActivity extends Activity {
 					String orderId = response.getOrderId(); //get your order id
                     //you will have to query the payment state with the transId or orderId from your server
                     //as we will notify you server whenever there is a payment state change
-
-					//you can query in the following way if you don't own a server
-					Payssion.getDetail(new GetDetailRequest()
-					.setAPIKey("5963a4c1c35c2a8e1")
-					.setSecretKey("286a0b747c946e3d902f017cf75d3bd1")
-					.setTransactionId(transId)
-					.setOrderId(orderId), new PayssionResponseHandler() {
-						@Override
-						public void onError(int arg0, String arg1,
-								Throwable arg2) {
-							// TODO Auto-generated method stub
-							
-						}
-
-						@Override
-						public void onFinish() {
-							// TODO Auto-generated method stub
-							
-						}
-
-						@Override
-						public void onStart() {
-							// TODO Auto-generated method stub
-							
-						}
-
-						@Override
-						public void onSuccess(PayssionResponse response) {
-							if (response.isSuccess()) {
-								GetDetailResponse detail = (GetDetailResponse)response;
-								if (null != detail) {
-									Toast.makeText(MainActivity.this, detail.getStateStr(), Toast.LENGTH_SHORT).show();
-									if (PPaymentState.COMPLETED == detail.getState()) {
-										//the payment was paid successfully
-									} else if (PPaymentState.FAILED == detail.getState()) {
-										//the payment was failed
-									} else if (PPaymentState.PENDING == detail.getState()) {
-										//the payment was still pending, please save the transId and orderId
-										//and recheck the state later as the payment may not be confirmed instantly
-									}
-								}
-							} else {
-								Toast.makeText(MainActivity.this, response.getDescription(), Toast.LENGTH_SHORT).show();
-							}
-						}
-					});
 				} else {
 					//should never go here
 				}
